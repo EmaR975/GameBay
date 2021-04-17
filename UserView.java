@@ -50,7 +50,7 @@ public class UserView {
         JTextField[] tf= {name,password};
         JCheckBox[] cb= {customer, seller};
         
-        userController.loginHandler(login, tf, cb);
+        userController.loginHandler(login, tf, cb, frame);
         
         
         frame.setBackground(Color.BLUE);
@@ -61,7 +61,10 @@ public class UserView {
         
         frame.pack();
         frame.setVisible(true);
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
         
         
     }

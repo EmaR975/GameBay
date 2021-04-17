@@ -20,7 +20,7 @@ public class UserController {
         this.user = user;
     }
     
-    public void loginHandler(JButton btn,JTextField[] tf, JCheckBox[] checkBox) {
+    public void loginHandler(JButton btn,JTextField[] tf, JCheckBox[] checkBox, JFrame frame) {
         
         
         btn.addActionListener( new ActionListener() {
@@ -43,14 +43,17 @@ public class UserController {
             user.setPassword(tf[1].getText());
             
             if(user.getUserName().equals("Muaaz") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
-                cV.showCustomerView();
+                customerView.showCustomerView();
+                frame.setVisible(false);
                 
             }
             else if (user.getUserName().equals("Emily") && user.getPassword().equals("1234") && user.getUserType().equals("Seller")){
                 System.out.println("Hi There!");
+                frame.setVisible(false);
             }
             else if (user.getUserName().equals("Truong") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
                 System.out.println("Hi There!");
+                frame.setVisible(false);
             }
             else                
                JOptionPane.showMessageDialog(null, "Incorrect Username or Password or User Type.","Error", JOptionPane.ERROR_MESSAGE);
@@ -61,7 +64,7 @@ public class UserController {
         );
     }
     
-    private CustomerView cV=new CustomerView();
+    private CustomerView customerView=new CustomerView();
     private User user;
     
 }
