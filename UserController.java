@@ -48,7 +48,7 @@ public class UserController {
                 
             }
             else if (user.getUserName().equals("Emily") && user.getPassword().equals("1234") && user.getUserType().equals("Seller")){
-                System.out.println("Hi There!");
+                SellerController.main(new String[] {"main"});
                 frame.setVisible(false);
             }
             else if (user.getUserName().equals("Truong") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
