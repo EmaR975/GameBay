@@ -39,9 +39,16 @@ public class RevenueController {
         public void actionPerformed(ActionEvent e) {
             SellerController.main();
         }
+    }
+        
+    public static void main(String[] args){
+        RevenueView view = new RevenueView();
+        Seller model = new Seller();
+        RevenueController controller = new RevenueController(view, model);
+        
+        view.setVisible(true);       
         
     }
-            
     
     private RevenueView view;
     private Seller model;
