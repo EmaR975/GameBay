@@ -5,6 +5,7 @@
  */
 package View;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -15,33 +16,32 @@ import javax.swing.*;
 public class RevenueView extends JFrame{
     
     public RevenueView(){
+        JPanel titlePanel = new JPanel();
         JPanel revPanel = new JPanel();
+        JPanel compPanel = new JPanel();
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400,400);
+        compPanel.setLayout(new BorderLayout());
+       
+        titlePanel.add(title);
+        titlePanel.add(homeButton);
         
-        //title.setBounds(130,100,100, 40);
-        revPanel.add(title);
-        homeButton.setBounds(130,100,100, 40);
-        revPanel.add(homeButton);
+        compPanel.add(titlePanel, BorderLayout.NORTH);
         
-        
-        //costLabel.setBounds(100, 10, 50, 30);
         revPanel.add(costLabel);
-        //totalCost.setBounds(100, 60, 50, 30);
         revPanel.add(totalCost);
         
-        //revenueLabel.setBounds(140, 10, 50, 30);
         revPanel.add(revenueLabel);
-        //totalRevenue.setBounds(140, 50, 50, 30);
         revPanel.add(totalRevenue);
         
-        //profitLabel.setBounds(180, 10, 50, 30);
         revPanel.add(profitLabel);
-        //totalProfit.setBounds(180, 50, 50, 30);
         revPanel.add(totalProfit);
         
-        this.add(revPanel);
+        compPanel.add(revPanel, BorderLayout.CENTER);
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(600,400);
+        this.getContentPane().add(compPanel);
+        
     }
     
     public void setCost(double cost){
