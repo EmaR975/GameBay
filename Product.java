@@ -1,3 +1,5 @@
+package Main;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -60,10 +62,19 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "ID=" + ID + ", name=" + name + ", quantity=" + quantity + ", invoicePrice=" + invoicePrice + ", sellingPrice=" + sellingPrice + '}';
+        return "ID: " + ID + ", invoicePrice: " + invoicePrice + ", sellingPrice: " + sellingPrice + ' ';
     }
+  
     public String productDetails () {
         return "Name: "+ name+" Price: $"+sellingPrice;
+    }
+   
+    public String productName() {
+        return " " + name;
+    }
+    
+    public int productQuantity () {
+        return quantity;
     }
    
     private int ID;
@@ -72,3 +83,4 @@ public class Product {
     private double invoicePrice;
     private double sellingPrice;
 }
+
