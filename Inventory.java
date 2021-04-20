@@ -1,6 +1,10 @@
 
+package Main;
+
+
 import java.util.*;
 import java.util.ArrayList;
+import Model.Seller;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +21,9 @@ public class Inventory {
         this.products = products;
     }
     public Inventory() {
-        
+        Product p = new Product(5689, "Fortnite", 3, 40.0, 70.0);
+        this.products.add(p);
+        this.amount = 1;
     }
 
     public List<Product> getProducts() {
@@ -29,13 +35,21 @@ public class Inventory {
     }
 
     
-    public void addProduct() {
+    public void addProduct(int i, String n, int q, double ip, double s){
         
-        for (int i = 1; i <= 10; i++) {
+        Product l = new Product(i, n , q, ip, s);
+        this.products.add(l);
+        this.amount++;
+        /*for (int i = 1; i <= 10; i++) {
             Product p = new Product(i, "Fortnite" + i, i, 40.0, 70.0);
             this.products.add(p);
-        }        
+        }*/    
     }
     
+    public void updateInventory(int quantity){
+        
+    }
+    
+    private int amount;
     private List<Product> products= new ArrayList<>();
 }
