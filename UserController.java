@@ -1,4 +1,8 @@
+package Controller;
 
+
+import Model.User;
+import View.CustomerView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -52,8 +56,9 @@ public class UserController {
                 frame.setVisible(false);
             }
             else if (user.getUserName().equals("Truong") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
-                System.out.println("Hi There!");
+                customerView.showCustomerView();
                 frame.setVisible(false);
+                
             }
             else                
                JOptionPane.showMessageDialog(null, "Incorrect Username or Password or User Type.","Error", JOptionPane.ERROR_MESSAGE);
