@@ -20,7 +20,7 @@ public class CustomerController {
         
         this.customer = customer;
         this.inventory = new Inventory();
-        inventory.addProduct();
+        //inventory.addProduct();
         this.cart = new Cart();
     }
 
