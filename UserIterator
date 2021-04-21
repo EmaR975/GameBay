@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Main;
+
+import Model.User;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ *
+ * @author Muaaz
+ */
+public class UserIterator implements Iterator {
+
+    public UserIterator(int index,List<User> users) {
+        this.index = index;
+        this.users = users;
+    }
+    
+    
+    @Override
+    public boolean hasNext() {
+        if(index<users.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User next() {
+        if(this.hasNext()) {
+            return users.get(index);
+        } 
+        return null;
+    }
+    
+    int index;
+    private List<User> users;
+    
+}
