@@ -1,0 +1,121 @@
+import Main.UserIterator;
+import Model.User;
+import View.CustomerView;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Muaaz
+ */
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class UserController {
+
+    public UserController(User user) {
+        this.user = user;
+    }
+
+    public void loginHandler(JButton btn, JTextField[] tf, JCheckBox[] checkBox, JFrame frame) {
+
+        User user1 = new User("John", "1234", "Customer");
+        User user2 = new User("Muaaz", "1234", "Customer");
+        User user3 = new User("Emily", "1234", "Seller");
+        User user4 = new User("Tim", "1234", "Seller");
+        User user5 = new User("Truong", "1234", "Customer");
+
+        try {
+            FileWriter usersList = new FileWriter("UsersList.txt");
+            usersList.write(user1.getUserName() + " " + user1.getPassword() + " " + user1.getUserType() + System.lineSeparator());
+            usersList.write(user2.getUserName() + " " + user2.getPassword() + " " + user2.getUserType() + System.lineSeparator());
+            usersList.write(user3.getUserName() + " " + user3.getPassword() + " " + user3.getUserType() + System.lineSeparator());
+            usersList.write(user4.getUserName() + " " + user4.getPassword() + " " + user4.getUserType() + System.lineSeparator());
+            usersList.write(user5.getUserName() + " " + user5.getPassword() + " " + user5.getUserType() + System.lineSeparator());
+            usersList.close();
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        try {
+            Scanner input= new Scanner(new File("UsersList.txt"));
+                        
+            
+
+            while(input.hasNextLine()) {
+                String[] line= input.nextLine().split(" ");                
+                user.setUserName(line[0]);
+                user.setPassword(line[1]);
+                user.setUserType(line[2]);                
+                             
+            }input.close();
+           
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+          
+
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+
+                for (int i = 0; i < users.size(); i++) {
+                    UserIterator iterator = new UserIterator(i, users);
+                    System.out.println(users.get(4).getUserName());
+                        iterator.hasNext();
+                        User user = iterator.next();                    
+                    System.out.println(user.getUserName());
+                }
+
+                if (checkBox[0].isSelected()) {
+                    user.setUserType("Customer");
+
+                } else if (checkBox[1].isSelected()) {
+                    user.setUserType("Seller");
+                } else if (checkBox[0].isSelected() && checkBox[1].isSelected()) {
+                    System.out.println("Please Check only one Box");
+                } else {
+                    System.out.println("Please Check either Customer or Seller Box");
+                }
+                user.setUserName(tf[0].getText());
+                user.setPassword(tf[1].getText());
+
+                if (user.getUserName().equals("Muaaz") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
+                    customerView.showCustomerView();
+                    frame.setVisible(false);
+
+                } else if (user.getUserName().equals("Emily") && user.getPassword().equals("1234") && user.getUserType().equals("Seller")) {
+                    SellerController.main(new String[]{"main"});
+                    frame.setVisible(false);
+                } else if (user.getUserName().equals("Truong") && user.getPassword().equals("1234") && user.getUserType().equals("Customer")) {
+                    customerView.showCustomerView();
+                    frame.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect Username or Password or User Type.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
+
+    private CustomerView customerView = new CustomerView();
+    private User user;
+    private List<User> users = new ArrayList<User>();
+};
